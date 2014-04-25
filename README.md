@@ -1,5 +1,4 @@
 
-
 BREAKOUT 3D
 
 =============
@@ -29,6 +28,7 @@ To compile and play just use the Make command in this folder, and then run the b
 Unhappily, this was tested only on Linux systems. 
 
 In a Linux system:
+
 	$make
 	$./breakout
 
