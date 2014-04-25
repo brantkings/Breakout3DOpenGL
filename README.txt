@@ -1,9 +1,13 @@
-BLOCKOUT 3D, 
+KNOWN ISSUES:
+	- Code is under translation from portuguese.
+	- As of OpenGL 4, text is not rendering correctly.
+
+BREAKOUT 3D, 
 	by João Guilherme Reis Caldeira Brant
 
 --- INTRO ---
 
-Blackout is a very simple computer game. Basically the player controls a squared paddle playing 'Wall' using a ball that is reflected by all solids and walls (except the bootom one). When the ball touches (and it's reflect) by a part of the wall, that is eliminated, and the player goes on until the entire wall disappears. When that happens, another wall appears and the ball keeps it's velocity. The game ends when the player loses all his lives, which is lost when the ball reaches the bottom part.
+Breakout is a very simple computer game. Basically the player controls a squared paddle playing 'Wall' using a ball that is reflected by all solids and walls (except the bottom one). When the ball touches (and it's reflect) by a part of the wall, that is eliminated, and the player goes on until the entire wall disappears. When that happens, another wall appears and the ball keeps it's velocity. The game ends when the player loses all his lives, which is lost when the ball reaches the bottom part.
 
 In the end, the score is shown. Score is given by how many walls and parts of the walls were destroyed.
 
@@ -66,6 +70,6 @@ Please have the make program installed on the machine. In the other side, just c
 		-> Hit detection is made by rectangle overlay detection.
 		-> The ball can be reflected on the X axis as well, if it hits a brick on it's side.
 
---- REFERENCES ---
+--- REFERENCES & LIBRARIES ---
 GlFont by Brad Fish
 brad.fish@gmail.com
