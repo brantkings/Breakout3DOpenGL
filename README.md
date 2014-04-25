@@ -11,6 +11,10 @@ For the development of this game, it was used OpenGL, GLUT for window management
 
 This was made as a project for the Computer Graphics course in UFMG, Brazil.
 
+<p align="center">
+ <img src="https://dl.dropboxusercontent.com/u/5984649/breakout.png" alt="Screenshot"/>
+</p>
+
 INSTALLATION
 --------
 
