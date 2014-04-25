@@ -76,5 +76,6 @@ Please have the make program installed on the machine. In the other side, just c
 		-> The ball can be reflected on the X axis as well, if it hits a brick on it's side.
 
 --- REFERENCES & LIBRARIES ---
-GlFont by Brad Fish
-brad.fish@gmail.com
+
+	-> GlFont by Brad Fish
+	brad.fish@gmail.com
