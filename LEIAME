@@ -1,0 +1,66 @@
+BLOCKOUT, 
+	por João Guilherme Reis Caldeira Brant
+
+--- INTRODUÇÃO ---
+
+Blockout é um jogo de computador muito simples, parecido com Pong. Basicamente o jogador controla uma raquete ("paddle") quadrada jogando "paredão" usando uma bola que é refletida por todas as superfícies (exceto a inferior). Quando a bola toca (e é refletida) por uma parte da parede, ela a elimina, e o jogo progride até eliminar a parede por completo. Quando não se consegue rebater a bola (ela passa pela "parede inferior"), perde-se uma vida. Ao perder todas as vidas, perde-se o jogo e a pontuação é verificada.
+
+A pontuação se dá dependendo de quantas partes de paredes, também retangulares, forem eliminadas, e, nesse caso específico como será explicado adiante, a maneira como elas são eliminadas.
+
+O jogo sempre começa no modo pausa, com a raquete no centro de sua linha de movimento (a raquete só se movimenta para a direita ou para a esquerda, em uma linha), e a bola no centro da tela.
+
+Para o desenvolvimento do jogo, foi utilizado OpenGL, GLUT para janelas e a biblioteca GLFont de Brad Fish para renderizar texto (um pouco alterada para, por exemplo, localizar espaços e outras coisas).
+
+--- COMO COMPILAR E JOGAR ---
+
+Para compilar e jogar basta utilizar o comando Make nesta pasta, e então rodar o executável breakout que foi produzido.
+
+Em um sistema unix:
+	$make
+	$./breakout
+
+Para tal deve-se ter o utilitário make instalado na máquina. Caso contrário, compila-se manualmente utilizando o g++ com as bibliotecas -lglut e -lGLU.
+
+--- CONTROLES ---
+	-Movimenta-se o cursor do mouse para mover a raquete. Como específicado, com o mouse na direita da tela, a raquete vai para a direita, e vice-versa. Para rebater a bola para um certo lado, deve-se bater com o lado da raquete escolhido. Quanto mais distante do centro, maior a alteração na velocidade da bolinha no eixo X.
+	-Tecla Q para sair do jogo.
+	-Tecla R para recomeçar o jogo.
+	-Um clique com o botão esquerdo pausa o jogo, e despausa caso pausado.
+	-Um clique com o botão direito pausa o jogo e escreve todas as variáveis do programa. 
+
+--- DECISÕES DE IMPLEMENTAÇÃO ---
+
+	-> Como explicado anteriormente, a reflexão da bola na rebatida depende da posição da bola nesse momento em relação ao centro da raquete, quanto mais longe do centro, mais curva torna-se a bola naquela direção.
+	-> Paredes ou fases são geradas aleatóriamente em um sistema de sementes em matrizes de tamanho constante. Primeiro, gera-se um número alvo aleatório de tijolos na matriz. Depois, espalha-se aleatóriamente um outro número aleatório de sementes na matriz. Em seguida, as sementes vão sendo localizadas e expandidas (criando 4 outras sementes à direita, à esquerda, em cima e em baixo) até completar o número de tijolos escolhido, formando uma parede.
+	-> Existe uma fila de paredes que é toda renderizada, atrás da parede ativa (que está sendo destruída pela bolinha). Isso permite uma satisfatória impressão de profundidade. O primeiro da fila é renderizado primeiro, depois o segundo com um Z maior (mais profundo), até chegar no último. As paredes ficam juntas, dando a aparência que o ambiente de jogo é um longo pedaço de mármore.
+	-> Quando a parede ativa é eliminada, o jogador é parabenizado por um texto aleatório (existem 10 no total).
+	-> Quando a parede ativa é eliminada, a fila de paredes mais profundas vão chegando a frente, e o primeira da fila torna-se a parede ativa. Quando isso acontece, uma nova parede é criada no fim da fila, permanecendo constante o número de paredes no bloco total.
+	-> O sistema de pontuação é totalmente diferenciado, e contém as seguintes features:
+		-> Um placar constante na tela do jogo, na HUD, como explicado adiante.
+		-> Cada tijolo tem um valor, e esse valor é aumentado ao placar atual quando o tijolo é destruído.
+		-> Se mais de um tijolo é destruído sem que ocorra uma nova rebatida, uma combinação acontece. Basicamente existe um contador que é incrementado na destruição de cada tijolo. O ponto ganho pela destruição do tijolo torna-se então a seguinte fórmula: 
+
+					Valor do Tijolo + 0.5 * Valor do Tijolo * Contador de combinação
+
+		Quando a bola é rebatida novamente pela raquete, o contador volta para 0. Isso recompensa o jogador por tentar destruir vários tijolos de uma só vez.
+		-> Toda vez que um tijolo é destruído, o valor aumentado no placar aparece na tela na forma de um número flutuante. Esse número é implementado da mesma forma que a parabenização ao jogador por destruir uma parede.
+	-> Alguns tijolos são especiais (além do AMARELO comum), com alguns efeitos diferentes:
+		-Tijolo VERMELHO, quando a bola destrói este tijolo, a bola torna-se vermelha e sua velocidade dobra até ser rebatida novamente.
+		-Tijolo AZUL, vale um número grande de pontos.
+		-Tijolo VERDE, vale um número menor de pontos, mas garante uma vida extra.
+		-Tijolo MARROM, precisa ser atingido duas vezes para ser destruído.
+		-Tijolo ROXO, quando a bola destrói este tijolo, ela torna-se roxa. Quando é rebatida pela raquete, ela "transfere" esse roxo para a raquete, como se estivesse passando uma doença. Isso deixa a raquete 4 vezes mais lenta até enconstar na bola novamente, dificultando o jogador.
+		-Um tijolo especial é criado ao encontrar uma semente e expandí-la.
+	-> Ao perder todas as vidas, um letreiro de Game Over acontece, convidando o jogador à tentar novamente, apertando a tecla R.
+	-> Existe uma HUD (Heads Up Display), que contém:
+		-Um placar de texto que contém o número de pontos atual.
+		-O número de vidas representado por bolinhas iguais às do jogo ortogonalizadas.
+		-Duas linhas no meio da tela. Essas linhas têm o propósito de guiar o jogador sobre onde colocar o cursor do mouse. Ao colocar o cursor entre as linhas, o jogador tem certeza de que a raquete permanecerá parada.
+	-> Existe um fundo 3D em movimento.
+	-> Como o jogo é criado aleatóriamente, ele é infinito. Não existe como ganhar, ou finalizar o jogo. O objetivo do jogador é tentar bater o seu próprio récorde de pontos, cada vez melhor.
+	-> A colisão ocorre por observar se o retângulo que a bola ocupa está entrelaçando com o retângulo que a raquete/pedaço da parede ocupa.
+	-> Ao ocorrer uma colisão com um pedaço da parede, a bola verifica se ela está a esquerda ou à direita da parede. Caso verdadeiro, a velocidade no eixo Y se mantém, e a velocidade no eixo X é alterado, ao contrário da situação comum.
+
+--- REFERÊNCIAS ---
+GlFont por Brad Fish
+brad.fish@gmail.com
