@@ -1,18 +1,19 @@
 <<<<<<< HEAD:README.md
+
+
+BREAKOUT 3D
+
+=============
+
+	by João Guilherme Reis Caldeira Brant
+
 KNOWN ISSUES:
     -Text is not rendering correctly after OpenGL4!
     -Code is under translation from Portuguese.
 
-BREAKOUT 3D, 
-	by João Guilherme Reis Caldeira Brant
-
 --- INTRO ---
 
 Breakout is a very simple computer game. Basically the player controls a squared paddle playing 'Wall' using a ball that is reflected by all solids and walls (except the bootom one). When the ball touches (and it's reflect) by a part of the wall, that is eliminated, and the player goes on until the entire wall disappears. When that happens, another wall appears and the ball keeps it's velocity. The game ends when the player loses all his lives, which is lost when the ball reaches the bottom part.
-=======
-BREAKOUT 3D
-=============
-by João Guilherme Reis Caldeira Brant
 
 KNOWN ISSUES:
 	- Code is under translation from portuguese.
