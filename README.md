@@ -1,4 +1,3 @@
-
 BREAKOUT 3D
 
 =============
@@ -6,8 +5,9 @@ BREAKOUT 3D
 by João Guilherme Reis Caldeira Brant
 
 KNOWN ISSUES:
-    -Text is not rendering correctly after OpenGL4!
-    -Code is under translation from Portuguese.
+    
+	-Text is not rendering correctly after OpenGL4!
+	-Code is under translation from Portuguese.
 
 --- INTRO ---
 
