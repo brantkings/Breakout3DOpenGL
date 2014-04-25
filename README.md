@@ -1,11 +1,10 @@
 
 
-
 BREAKOUT 3D
 
 =============
 
-	by João Guilherme Reis Caldeira Brant
+by João Guilherme Reis Caldeira Brant
 
 KNOWN ISSUES:
     -Text is not rendering correctly after OpenGL4!
@@ -13,17 +12,7 @@ KNOWN ISSUES:
 
 --- INTRO ---
 
-Breakout is a very simple computer game. Basically the player controls a squared paddle playing 'Wall' using a ball that is reflected by all solids and walls (except the bootom one). When the ball touches (and it's reflect) by a part of the wall, that is eliminated, and the player goes on until the entire wall disappears. When that happens, another wall appears and the ball keeps it's velocity. The game ends when the player loses all his lives, which is lost when the ball reaches the bottom part.
-
-KNOWN ISSUES:
-	- Code is under translation from portuguese.
-	- As of OpenGL 4, text is not rendering correctly.
-
-
---- INTRO ---
-
 Breakout is a very simple computer game. Basically the player controls a squared paddle playing 'Wall' using a ball that is reflected by all solids and walls (except the bottom one). When the ball touches (and it's reflect) by a part of the wall, that is eliminated, and the player goes on until the entire wall disappears. When that happens, another wall appears and the ball keeps it's velocity. The game ends when the player loses all his lives, which is lost when the ball reaches the bottom part.
->>>>>>> 598cc3d372adbe8cfed43b3f88bb2bbb5aad7dd5:README.txt
 
 In the end, the score is shown. Score is given by how many walls and parts of the walls were destroyed.
 
