@@ -20,7 +20,7 @@ INSTALLATION
 
 To compile and play just use the Make command in this folder, and then run the breakout executable that is produced.
 
-Unhappily, this was tested only on Linux systems. 
+Unfortunately, this was tested only on Linux systems. 
 
 In a Linux system:
 
